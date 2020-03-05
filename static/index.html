@@ -257,19 +257,46 @@ mouse = (function() {
     return self;
 })();
 
+
+//https://krazydad.com/tutorials/makecolors.php
+//https://www.w3schools.com/js/js_random.asp
+function byte2Hex(n){
+    var nybHexString = "0123456789ABCDEF";
+    return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
+}
+
+function RGB2Color(r,g,b){
+    return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
+}
+
+function chooseColor()
+{
+  center = 128;
+  width = 127;
+  frequency = Math.PI*2/100;
+  let i = Math.floor(Math.random() * 100); 
+  red   = Math.sin(frequency*i+2) * width + center;
+  green = Math.sin(frequency*i+0) * width + center;
+  blue  = Math.sin(frequency*i+4) * width + center;
+  return RGB2Color(red,green,blue);
+}
+
+
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+    addEntityWithoutName({'x':x,'y':y,'colour':chooseColor(),
+    'radius':5});
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+    addEntityWithoutName({'x':x,'y':y,'colour':chooseColor(),
+    'radius':5});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
-                          'radius':5});
+    addEntityWithoutName({'x':x,'y':y,'colour':chooseColor(),
+    'radius':5});
 });
 
 
