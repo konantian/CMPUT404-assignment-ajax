@@ -12,4 +12,10 @@ Contributors / Licensing
 
 Generally everything is LICENSE'D under the Apache 2 license by Abram Hindle.
 
+References
+========================
+https://krazydad.com/tutorials/makecolors.php
+https://www.w3schools.com/js/js_random.asp
+
+
 
