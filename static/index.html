@@ -150,7 +150,7 @@ function addEntity(entity, data) {
     world[entity] = data;
     drawNextFrame(); // (but should we?)
     //XXX: Send a XHTML Request that updates the entity you just  modified!
-    let url = "http://localhost:5000/entity/".concat(entity);
+    let url = "/entity/".concat(entity);
     sendJSONXMLHTTPRequest(url,data,null);
 }
 
@@ -302,7 +302,7 @@ mouse.mousedraggers.push(function(x,y,clicked,e) {
 
 function update() {
     //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
-    let url = "http://localhost:5000/world"
+    let url = "/world"
     let get = new XMLHttpRequest();
     get.open('GET',url);
     get.send();
